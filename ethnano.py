@@ -32,7 +32,7 @@ while True:
 			print('\tCashout HRs Remaining:\t'+str(round(cashouthours, 4)))
 		#print('\n\tHashrate Calc:\t\t'+str(j['data']['hashrate'])+ ' MH/s')
 		#Total ETH SO FAR
-		minedtotal=float(0.3937259) #Portfolio balance on coinbase asof 12jul21
+		minedtotal=float(<your_current_portfolio_value>)
 		try:
 			if float(lastvalue) > float(j['data']['balance']):
 				minedtotal += lastvalue
