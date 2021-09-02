@@ -8,11 +8,14 @@ import requests
 
 __author__='z0nk3r'
 
+# This script is only applicable to ETH Miners using NANOPOOL as their mining pool.
+# Replace the two values below to make it work
+
 account_id='<eth_hash_account_id>'
+current_portfolio_value=<your_current_portfolio_value>
 
 while True:
 	try:
-
 		j=json.loads((requests.Session().get('https://api.nanopool.org/v1/eth/user/'+str(account_id), headers='')).text)
 		ethcalc=json.loads((requests.Session().get('https://api.nanopool.org/v1/eth/approximated_earnings/'+str(j['data']['avgHashrate']['h6']), headers='')).text)
 		
@@ -30,9 +33,7 @@ while True:
 			print('\tCashout DYs Remaining:\t'+str(round(cashouthours/24, 5)))
 		else:
 			print('\tCashout HRs Remaining:\t'+str(round(cashouthours, 4)))
-		#print('\n\tHashrate Calc:\t\t'+str(j['data']['hashrate'])+ ' MH/s')
-		#Total ETH SO FAR
-		minedtotal=float(<your_current_portfolio_value>)
+		minedtotal=float(current_portfolio_value)
 		try:
 			if float(lastvalue) > float(j['data']['balance']):
 				minedtotal += lastvalue
